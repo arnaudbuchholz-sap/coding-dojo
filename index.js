@@ -7,8 +7,8 @@ const configuration = {
   port: process.env.PORT || 8080,
   mappings: [{
     match: /\/prime\/(\d+)/,
-    custom: (request, response, number) => {
-      const primeNumbers = primeGenerator(number);
+    custom: async (request, response, number) => {
+      const primeNumbers = await primeGenerator(parseInt(number, 10));
       response.writeHead(200, {
         'content-type': 'application/json'
       });
